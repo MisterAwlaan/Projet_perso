@@ -17,6 +17,7 @@ while nb_vie != 0 :
 
     elif joueur == bot : 
         print("Félication tu as réussie")
+        break
 
 if nb_vie == 0 : 
     print("tu as perdue !!")
