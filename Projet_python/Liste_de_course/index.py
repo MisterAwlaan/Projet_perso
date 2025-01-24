@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import *
+from tkinter import messagebox
 
 def menu():
     root = tk.Tk()
@@ -10,17 +10,41 @@ def menu():
     Titre.pack()
 
     bouton_afficher = tk.Button(root,text="Afficher la liste ",command=lambda:afficher())
+    bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",command=lambda:ajouter_produit())
     bouton_afficher.pack()
-
+    bouton_ajouter_produit.pack()
     root.mainloop()
     
-    pass
-
-
 def afficher():
     with open("liste.txt","r") as fichier:
         liste = fichier.read()
+    tk.messagebox.showinfo("Ma liste")
+
+def ajouter_produit():
+    root = tk.Tk()
+    root.title("Ajout nouveau produit")
+    root.geometry("200x200")
+    
+    
+    nom = tk.Label(root,text="Nom")
+    quantite = tk.Label(root,text="Quantité")
+    envoyer = tk.Button(root,text="Enregistrer",command=lambda:envoyer(nom_form,quantite_form))
+
+    nom_form = tk.Entry(root,bd=5)
+    quantite_form = tk.Entry(root,bd=5)
+    
+    
+    nom.place(x=0, y=15)
+    quantite.place(x=0,y=45)
+    envoyer.place(x=70,y=100)
+    nom_form.place(x=50,y=15)
+    quantite_form.place(x=50,y=45)
+    root.mainloop() 
     
 
-
-menu()
+def envoyer(nom,produit):
+    
+    
+    pass
+ 
+ajouter_produit()
