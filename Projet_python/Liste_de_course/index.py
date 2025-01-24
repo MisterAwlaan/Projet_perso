@@ -42,7 +42,6 @@ def ajouter_produit():
     quantite_form.place(x=50,y=45)
     root.mainloop() 
     
-
 def envoi(nom,quantite):
     text = f'{nom},{quantite};\n'
     with open("liste.txt","a") as ficher:
