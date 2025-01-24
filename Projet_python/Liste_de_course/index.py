@@ -28,7 +28,6 @@ def ajouter_produit():
     
     nom = tk.Label(root,text="Nom")
     quantite = tk.Label(root,text="Quantité")
-    envoyer = tk.Button(root,text="Enregistrer",command=lambda:envoyer(nom_form,quantite_form))
 
     nom_form = tk.Entry(root,bd=5)
     quantite_form = tk.Entry(root,bd=5)
@@ -36,15 +35,18 @@ def ajouter_produit():
     
     nom.place(x=0, y=15)
     quantite.place(x=0,y=45)
+    
+    envoyer = tk.Button(root,text="Enregistrer",command=lambda:envoi(nom_form.get(),quantite_form.get()))
     envoyer.place(x=70,y=100)
     nom_form.place(x=50,y=15)
     quantite_form.place(x=50,y=45)
     root.mainloop() 
     
 
-def envoyer(nom,produit):
-    
-    
-    pass
+def envoi(nom,quantite):
+    text = f'{nom},{quantite};\n'
+    with open("liste.txt","a") as ficher:
+        ficher.write(text)
+    tk.messagebox.showinfo("Réussie",message="Votre liste est enregistré") 
  
-ajouter_produit()
+menu()
