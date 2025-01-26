@@ -1,20 +1,37 @@
 import tkinter as tk
 from tkinter import messagebox
+import tkinter.font as font
 
+#Fonction Menu
 def menu():
     root = tk.Tk()
     root.title("Liste de course")
-    root.geometry("1080x720")
-    Titre = tk.Label(root,text="Bienvenue sur votre liste de course")
-    Titre.pack()
-    bouton_afficher = tk.Button(root,text="Afficher la liste ",command=lambda:afficher())
-    bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",command=lambda:ajouter_produit())
-    bouton_cocher = tk.Button(root,text="Suivi Liste",command=lambda:cocher())
-    bouton_afficher.pack()
-    bouton_ajouter_produit.pack()
-    bouton_cocher.pack()
-    root.mainloop()
+    root.geometry("400x400")
+    root.config(background="#65157d")    
     
+    Titre = tk.Label(root,text="Bienvenue sur votre liste de course",bg='#65157d',fg='white',)
+    Titre.pack()
+    
+    f = font.Font(size=15)
+    g = font.Font(size=18)
+    
+    
+    bouton_afficher = tk.Button(root,text="Afficher la liste ",bg='#e56161',command=lambda:afficher())
+    bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",bg='#e56161',command=lambda:ajouter_produit())
+    bouton_cocher = tk.Button(root,text="Suivi Liste",bg='#e56161',command=lambda:cocher())
+    
+    
+    bouton_afficher['font'] = f
+    bouton_ajouter_produit['font'] = f
+    bouton_cocher['font'] = f
+    Titre['font'] = g
+    
+    bouton_afficher.place(x=120,y=100)
+    bouton_ajouter_produit.place(x=110,y=150)
+    bouton_cocher.place(x=140,y=200)
+    root.mainloop()
+
+#Fonction qui permet d'afficher le fichier txt
 def afficher():
     with open("liste.txt","r") as fichier:
         liste = fichier.read()
