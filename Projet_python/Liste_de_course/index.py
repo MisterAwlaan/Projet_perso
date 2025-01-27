@@ -9,7 +9,7 @@ def menu():
     root.geometry("400x400")
     root.config(background="#65157d")    
     
-    Titre = tk.Label(root,text="Bienvenue sur votre liste de course",bg='#65157d',fg='white',)
+    Titre = tk.Label(root,text="Bienvenue sur votre liste de course",bg='#65157d',fg='white')
     Titre.pack()
     
     f = font.Font(size=15)
@@ -36,9 +36,15 @@ def menu():
 
 #Fonction qui permet d'afficher le fichier txt
 def afficher():
+    root = tk.Tk()
+    root.title("Ma Liste")
+    root.geometry("300x300")
+    root.config(background="#65157d")
     with open("liste.txt","r") as fichier:
         liste = fichier.read()
-    tk.messagebox.showinfo("Ma liste",liste)
+    label = tk.Label(root,text=liste,bg="#65157d",fg="white")
+    label.pack()
+    root.mainloop()
 
 def ajouter_produit():
     root = tk.Tk()
@@ -84,6 +90,4 @@ def transformation_txt_en_liste(fichier):
 def fermer(root):
     root.destroy()
     
-
-
 menu()
