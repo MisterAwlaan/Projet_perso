@@ -46,6 +46,7 @@ def afficher():
     label.pack()
     root.mainloop()
 
+#Fonction qui permet d'ajouter un produit au fichier txt
 def ajouter_produit():
     root = tk.Tk()
     root.title("Ajout nouveau produit")
@@ -63,12 +64,14 @@ def ajouter_produit():
     quantite_form.place(x=50,y=45)
     root.mainloop() 
     
+#Fonction qui permet d'envoyer la commande
 def envoi(nom,quantite):
     text = f'{nom},{quantite};\n'
     with open("liste.txt","a") as ficher:
         ficher.write(text)
     tk.messagebox.showinfo("Réussie",message="Votre liste est enregistré") 
- 
+
+#Fonction qui coche la liste de course
 def cocher():
     root = tk.Tk()
     root.title("Suivie de la liste")
@@ -82,13 +85,16 @@ def cocher():
         variable.append(var)
     root.mainloop()
 
+#Fonction qui permet de convertir un fichier txt en list
 def transformation_txt_en_liste(fichier):
     liste = fichier.split("\n")
     return liste
-        
+
+#Fonction qui permet de fermer une page        
 def fermer(root):
     root.destroy()
     
+#Fonction qui supprime un produit qui est dans la liste
 def supprimer_produit(nom_du_produit):
     with open("liste.txt","r") as fichier :
         txt = fichier.read()
