@@ -78,16 +78,26 @@ def cocher():
     for i,option in enumerate(liste):
         var = tk.BooleanVar()
         checkbox = tk.Checkbutton(root,text=option,variable=var)
-        checkbox.pack(anchor='w')
+        checkbox.pack()
         variable.append(var)
-    for i,var in enumerate(variable):
-        print(f"{liste[i]}:{var.get()}")
     root.mainloop()
 
 def transformation_txt_en_liste(fichier):
-    return(list(fichier))
-    
+    liste = fichier.split("\n")
+    return liste
+        
 def fermer(root):
     root.destroy()
     
+def supprimer_produit(nom_du_produit):
+    with open("liste.txt","r") as fichier :
+        txt = fichier.read()
+    liste = transformation_txt_en_liste(txt)
+    for i in liste : 
+        if nom_du_produit in i :
+            liste.remove(i)
+    resultat = '\n'.join(liste)
+    with open("liste.txt",'w')as fichier : 
+        fichier.write(resultat)
+        
 menu()
