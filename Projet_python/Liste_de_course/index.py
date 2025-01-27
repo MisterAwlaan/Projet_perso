@@ -19,16 +19,19 @@ def menu():
     bouton_afficher = tk.Button(root,text="Afficher la liste ",bg='#e56161',command=lambda:afficher())
     bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",bg='#e56161',command=lambda:ajouter_produit())
     bouton_cocher = tk.Button(root,text="Suivi Liste",bg='#e56161',command=lambda:cocher())
+    bouton_fermer = tk.Button(root,text="Fermer",bg='red',command=lambda:fermer(root))
     
     
     bouton_afficher['font'] = f
     bouton_ajouter_produit['font'] = f
     bouton_cocher['font'] = f
+    bouton_fermer['font'] = f
     Titre['font'] = g
     
     bouton_afficher.place(x=120,y=100)
     bouton_ajouter_produit.place(x=110,y=150)
     bouton_cocher.place(x=140,y=200)
+    bouton_fermer.place(x=155,y=300)
     root.mainloop()
 
 #Fonction qui permet d'afficher le fichier txt
@@ -77,4 +80,9 @@ def cocher():
 def transformation_txt_en_liste(fichier):
     return(list(fichier))
     
+def fermer(root):
+    root.destroy()
+    
+
+
 menu()
