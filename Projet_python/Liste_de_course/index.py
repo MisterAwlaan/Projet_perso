@@ -19,18 +19,22 @@ def menu():
     bouton_afficher = tk.Button(root,text="Afficher la liste ",bg='#e56161',command=lambda:afficher())
     bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",bg='#e56161',command=lambda:ajouter_produit())
     bouton_cocher = tk.Button(root,text="Suivi Liste",bg='#e56161',command=lambda:cocher())
+    bouton_supprimer_produit = tk.Button(root,text="Supprimer un produit",bg="#e56161",command=lambda:formulaire_supprimer_produit())
     bouton_fermer = tk.Button(root,text="Fermer",bg='red',command=lambda:fermer(root))
+    
     
     
     bouton_afficher['font'] = f
     bouton_ajouter_produit['font'] = f
     bouton_cocher['font'] = f
     bouton_fermer['font'] = f
+    bouton_supprimer_produit['font'] = f
     Titre['font'] = g
     
     bouton_afficher.place(x=120,y=100)
     bouton_ajouter_produit.place(x=110,y=150)
     bouton_cocher.place(x=140,y=200)
+    bouton_supprimer_produit.place(x=100,y=250)
     bouton_fermer.place(x=155,y=300)
     root.mainloop()
 
@@ -106,4 +110,26 @@ def supprimer_produit(nom_du_produit):
     with open("liste.txt",'w')as fichier : 
         fichier.write(resultat)
         
+def formulaire_supprimer_produit():
+    root = tk.Tk()
+    root.title("Supprimer Produit")
+    root.geometry("400x400")
+    root.config(background="#65157d")
+    
+    f = font.Font(size=15)
+    
+    nom_du_produit = tk.Label(root,text="Nom du produit",bg="#65157d",fg="white")
+    form_nom = tk.Entry(root,bd=5)
+    bouton_confirmer = tk.Button(root,text="Confirmer",bg="pink",command=lambda:supprimer_produit(form_nom.get()))
+    bouton_fermer = tk.Button(root,text="Fermer",bg="red",command=lambda:fermer(root))
+    
+    nom_du_produit["font"] = f
+    
+    nom_du_produit.place(x=130,y=100)
+    form_nom.place(x=130,y=150)
+    bouton_confirmer.place(x=160,y=200)
+    bouton_fermer.place(x=170,y=250)
+    root.mainloop()
+    
+
 menu()
