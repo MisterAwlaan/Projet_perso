@@ -16,10 +16,10 @@ def menu():
     g = font.Font(size=18)
     
     
-    bouton_afficher = tk.Button(root,text="Afficher la liste ",bg='#e56161',command=lambda:afficher())
-    bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",bg='#e56161',command=lambda:ajouter_produit())
-    bouton_cocher = tk.Button(root,text="Suivi Liste",bg='#e56161',command=lambda:cocher())
-    bouton_supprimer_produit = tk.Button(root,text="Supprimer un produit",bg="#e56161",command=lambda:formulaire_supprimer_produit())
+    bouton_afficher = tk.Button(root,text="Afficher la liste ",bg='pink',command=lambda:afficher())
+    bouton_ajouter_produit = tk.Button(root,text="Ajouter un produit",bg='pink',command=lambda:ajouter_produit())
+    bouton_cocher = tk.Button(root,text="Suivi Liste",bg='pink',command=lambda:cocher())
+    bouton_supprimer_produit = tk.Button(root,text="Supprimer un produit",bg="pink",command=lambda:formulaire_supprimer_produit())
     bouton_fermer = tk.Button(root,text="Fermer",bg='red',command=lambda:fermer(root))
     
     
@@ -44,10 +44,14 @@ def afficher():
     root.title("Ma Liste")
     root.geometry("300x300")
     root.config(background="#65157d")
+    f = font.Font(size=15)
+    bouton_fermer = tk.Button(root,text="Fermer",bg="red",command=lambda:fermer(root))
     with open("liste.txt","r") as fichier:
         liste = fichier.read()
     label = tk.Label(root,text=liste,bg="#65157d",fg="white")
+    bouton_fermer["font"] = f
     label.pack()
+    bouton_fermer.place(x=130,y=150)
     root.mainloop()
 
 #Fonction qui permet d'ajouter un produit au fichier txt
@@ -131,5 +135,4 @@ def formulaire_supprimer_produit():
     bouton_fermer.place(x=170,y=250)
     root.mainloop()
     
-
 menu()
