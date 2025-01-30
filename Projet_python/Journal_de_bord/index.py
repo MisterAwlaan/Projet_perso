@@ -21,9 +21,17 @@ def menu():
     Bouton_fermer.place(x=150,y=240)
     root.mainloop()
 
+def ajouter_text(date,text):
+    text = f"{date},{text}"
+    with open("journal.txt","a") as fichier :
+        fichier.write(text)
+    
+def formulaire_ajout_text():
+    root = tk.Tk()
+    pass
 
 
 
 
 
-menu()
+formulaire_ajout_text()
