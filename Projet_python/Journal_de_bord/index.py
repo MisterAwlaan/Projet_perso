@@ -28,7 +28,26 @@ def ajouter_text(date,text):
     
 def formulaire_ajout_text():
     root = tk.Tk()
-    pass
+    root.title("Ajouter un texte")
+    root.geometry("400x400")
+    root.config(background="#7366df")
+    
+    F = font.Font(size=10)
+    
+    label_date = tk.Label(root,text="Date",bg="#7366df",fg="white")
+    zone_date = tk.Entry(root,bd=1)
+    label_texte = tk.Label(root,text="Votre Texte",bg="#7366df",fg="white")
+    zone_de_texte = tk.Entry(root,bd=1)
+    
+    label_date['font'] = F
+    label_texte['font'] = F
+
+    zone_date.place(x=100,y=50)
+    label_date.place(x=0,y=50)
+    zone_de_texte.place(x=80,y=100,width=100,height=100)
+    label_texte.place(x=0,y=100)    
+    root.mainloop()
+    
 
 
 
