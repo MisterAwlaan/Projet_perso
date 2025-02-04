@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import font
+from tkinter import scrolledtext
+from tkinter import messagebox
 
 def menu():
     root = tk.Tk()
@@ -8,9 +10,9 @@ def menu():
     root.config(background="#7366df")
     f = font.Font(size=15)
     Titre = tk.Label(root,text="Bienvenue sur mon Journal de Bord",bg="#7366df",fg="white")
-    Bouton_Ajouter_text = tk.Button(root,text="Ajouter un text",bg="#d94bff")
+    Bouton_Ajouter_text = tk.Button(root,text="Ajouter un text",bg="#d94bff",command=lambda:formulaire_ajout_text())
     Bouton_afficher_mon_journal_de_bord = tk.Button(root,text="Afficher mon journal de bord",bg="#d94bff")
-    Bouton_fermer = tk.Button(root,text="Fermer",bg="red")
+    Bouton_fermer = tk.Button(root,text="Fermer",bg="red",command=lambda:fermer(root))
     Titre["font"] = f
     Bouton_Ajouter_text["font"] = f
     Bouton_afficher_mon_journal_de_bord["font"] = f
@@ -22,9 +24,10 @@ def menu():
     root.mainloop()
 
 def ajouter_text(date,text):
-    text = f"{date},{text}"
-    with open("journal.txt","a") as fichier :
+    text = f"{date},{text},;\n"
+    with open("journal.txt","a",encoding="utf-8") as fichier :
         fichier.write(text)
+    messagebox.showinfo("Succès","Votre texte est bien enregistré")
     
 def formulaire_ajout_text():
     root = tk.Tk()
@@ -32,25 +35,48 @@ def formulaire_ajout_text():
     root.geometry("400x400")
     root.config(background="#7366df")
     
-    F = font.Font(size=10)
+    F = font.Font(size=15)
     
-    label_date = tk.Label(root,text="Date",bg="#7366df",fg="white")
+    label_date = tk.Label(root,text="Date(jj/mm/aaaa)",bg="#7366df",fg="white")
     zone_date = tk.Entry(root,bd=1)
-    label_texte = tk.Label(root,text="Votre Texte",bg="#7366df",fg="white")
-    zone_de_texte = tk.Entry(root,bd=1)
+    label_texte = tk.Label(root,text="Votre Récit",bg="#7366df",fg="white")
+    zone_texte = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=40, height=10)
+    bouton_enregistrer = tk.Button(root,text="Enregistrer",bg="#cd2bf8",fg="white",command=lambda:ajouter_text(zone_date.get(),zone_texte.get("1.0",tk.END)))
+    bouton_fermer = tk.Button(root,text="Fermer",bg="red",fg="white",command=lambda:fermer(root))
     
     label_date['font'] = F
     label_texte['font'] = F
 
-    zone_date.place(x=100,y=50)
-    label_date.place(x=0,y=50)
-    zone_de_texte.place(x=80,y=100,width=100,height=100)
-    label_texte.place(x=0,y=100)    
+    zone_date.place(x=130,y=50)
+    label_date.place(x=110,y=20)
+    label_texte.place(x=130,y=80)
+    zone_texte.place(x=30,y=130)
+    bouton_enregistrer.place(x=150,y=310)
+    bouton_fermer.place(x=160,y=345)
     root.mainloop()
     
+def fermer(root):
+    return root.destroy()
+
+def str_en_liste(text):
+    x = []
+    liste = text.split(";")
+    for i in liste : 
+        x.append(i.split(",")) 
+    return x
+    
+
+def afficher(date):
+    with open("journal.txt","r") as fichier : 
+        text = fichier.read()
+        liste = str_en_liste(text)
+    for i in liste : 
+        if str(date) == i :
+            separateur = ","
+            x = separateur.join()
 
 
-
-
-
-formulaire_ajout_text()
+with open("journal.txt","r") as fichier : 
+    txt = fichier.read()
+    liste = str_en_liste(txt)
+    print(liste)
