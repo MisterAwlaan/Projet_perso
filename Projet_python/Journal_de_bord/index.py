@@ -84,13 +84,17 @@ def afficher(date):
 
 def formulaire_pour_afficher():
     root = tk.Tk()
-    root.geometry("400x400")
+    root.geometry("400x200")
     root.title("Formulaire pour envoyer la date")
+    root.config(background="#7366df")
     date_label = tk.Label(root,text="Date(jj/mm/aaaa)")
     zone_de_texte = tk.Entry(root,bd=5)
-    date_label.place(x=0,y=100)
-    zone_de_texte.place(x=100,y=100)
+    bouton_soumettre = tk.Button(root,text="Afficher",command=lambda:afficher(zone_de_texte.get()))
+    date_label.place(x=140,y=80)
+    zone_de_texte.place(x=120,y=100)
+    bouton_soumettre.place(x=130,y=160)
     root.mainloop()
+
 
 
 formulaire_pour_afficher()
