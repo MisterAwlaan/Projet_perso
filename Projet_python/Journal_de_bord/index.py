@@ -11,7 +11,7 @@ def menu():
     f = font.Font(size=15)
     Titre = tk.Label(root,text="Bienvenue sur mon Journal de Bord",bg="#7366df",fg="white")
     Bouton_Ajouter_text = tk.Button(root,text="Ajouter un text",bg="#d94bff",command=lambda:formulaire_ajout_text())
-    Bouton_afficher_mon_journal_de_bord = tk.Button(root,text="Afficher mon journal de bord",bg="#d94bff")
+    Bouton_afficher_mon_journal_de_bord = tk.Button(root,text="Afficher mon journal de bord",bg="#d94bff",command=lambda:formulaire_pour_afficher())
     Bouton_fermer = tk.Button(root,text="Fermer",bg="red",command=lambda:fermer(root))
     Titre["font"] = f
     Bouton_Ajouter_text["font"] = f
@@ -87,12 +87,12 @@ def formulaire_pour_afficher():
     root.geometry("400x200")
     root.title("Formulaire pour envoyer la date")
     root.config(background="#7366df")
-    date_label = tk.Label(root,text="Date(jj/mm/aaaa)")
+    date_label = tk.Label(root,text="Date(jj/mm/aaaa)",bg="#7366df")
     zone_de_texte = tk.Entry(root,bd=5)
-    bouton_soumettre = tk.Button(root,text="Afficher",command=lambda:afficher(zone_de_texte.get()))
+    bouton_soumettre = tk.Button(root,text="Afficher",command=lambda:afficher(zone_de_texte.get()),bg="purple")
     date_label.place(x=140,y=80)
     zone_de_texte.place(x=120,y=100)
-    bouton_soumettre.place(x=130,y=160)
+    bouton_soumettre.place(x=160,y=160)
     root.mainloop()
 
 
