@@ -97,4 +97,4 @@ def formulaire_pour_afficher():
 
 
 
-formulaire_pour_afficher()
+menu()
