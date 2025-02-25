@@ -95,6 +95,4 @@ def formulaire_pour_afficher():
     bouton_soumettre.place(x=160,y=160)
     root.mainloop()
 
-
-
 menu()
