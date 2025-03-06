@@ -1,4 +1,6 @@
-# Grille pour le puissance 4 
+import random
+
+# Code pour le Puissance 4
 a = [[0,0,0,0],
      [0,0,0,0],
      [0,0,0,0],
@@ -63,5 +65,3 @@ def verif_diagonal():
     if a[0][3] == 2 and a[1][2] == 2 and a[2][1] == 2 and a[3][0] == 2 : 
         return True
 
-def action(j):
-    pass
